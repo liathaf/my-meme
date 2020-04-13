@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-meme</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body onload="onInit()">
+    <section class="screen" onclick="onShowMenu()"></section>
+    <header class="main-header flex justify-center">
+        <div class="header container flex align-center space-between">
+            <div class="logo"><img class="img-logo" onclick="onBackToGalery()" src="img/logo.png"></div>
+            <ul class="main-nav container flex align-center">
+                <li class = "container flex align-center justify-center"><a href="#">Gallery</a></li>
+                <li class = "container flex align-center justify-center"><a href="#">Memes</a></li>
+                <li class = "container flex align-center justify-center"><a href="#">About</a></li>
+            </ul>
+            <img class="menu-icon" src="svg/menu.svg" onclick="onShowMenu()" fill="white">
+        </div>
+    </header>
+    <section class="img-gallery container grid"></section>
+    <section class="main-content flex align-center justify-center">
+
+        <div class="canvas-container container">
+            <canvas id="my-canvas" height="500" width="500" class="canvas" onclick="onClearRect()"></canvas>
+        </div> 
+        <div class="edit-box container flex column">
+            <div class="line 1 container flex justify-center">
+                <input class="txt-box" name="txt-box" type="text" oninput="onUpdateText()" placeholder=" Add text">
+            </div>
+            <div class="line 2 container flex justify-center">
+                <img class="img-icon line-up" src="icons/up-arrow.png" alt="" onclick="onMoveLineUpOrDown(this)">   
+                <img class="img-icon line-down" src="icons/down-arrow.png" alt="" onclick="onMoveLineUpOrDown(this)">   
+                <img class="img-icon switch-line" src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="" onclick="onSwitchLine()">   
+                <img class="img-icon add" src="icons/add.png" alt="" onclick="onAddLine()">   
+                <img class="img-icon trash" src="icons/trash.png" alt="" onclick="onDeleteLine()">        
+            </div>
+            <div class="line 3 container flex justify-center">
+                <img class="img-icon font-size increase" src="icons/increase font - icon.png" alt="" onclick="onChangingSizeFont(this)">
+                <img class="img-icon font-size decrease"  src="icons/decrease font - icon.png" alt="" onclick="onChangingSizeFont(this)">
+                <img class="img-icon align-left" src="icons/align-to-left.png" alt="" onclick="onAlignVartical(this)">   
+                <img class="img-icon align-center" src="icons/center-text-alignment.png" alt="" onclick="onAlignVartical(this)">   
+                <img class="img-icon align-right" src="icons/align-to-right.png" alt="" onclick="onAlignVartical(this)">   
+            </div>
+            <div class="line 4 container flex justify-center">
+                <img class="img-icon paint-board" src="icons/paint-board-and-brush.png" alt="" onclick="onChangeFontColor()"> 
+                <input name="fontColor" type="color" style="display: none;" onchange="setFontColor()"></input>     
+                <select class="font-style" onchange="onChangeFont()">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Ariel</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>   
+                <img class="img-icon text-stroke" src="icons/text stroke.png" alt="" onclick="onChangeStrokeColor()">
+                <input name="stokeColor" type="color" style="display: none;" onchange="setStrokeColor()"></input>   
+
+            </div>
+            <div class="line 5 container flex justify-center">
+                <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+            </div>
+
+
+           
+        </div>
+    </section>
+    <script src="js/util-storage.js"></script>
+    <script src="js/service-storage.js"></script>
+    <script src="js/myMeme-service.js"></script>
+    <script src="js/myMeme-controller.js"></script>
+</body>
+</html> 
